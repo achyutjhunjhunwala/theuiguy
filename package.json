@@ -14,7 +14,7 @@
   "dependencies": {
     "bulma": "^0.9.4",
     "font-awesome": "^4.7.0",
-    "gsap": "^3.12.1",
+    "gsap": "^3.12.2",
     "jquery": "^3.5.0",
     "node-sass-chokidar": "2.0.0",
     "prop-types": "^15.8.1",
