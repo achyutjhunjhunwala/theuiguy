@@ -44,7 +44,6 @@ const Hero = () => {
             </h1>
 
             <div className="hero__subtitle">
-              <p className="hero__subtitle-line">Fullstack Developer</p>
               <p className="hero__subtitle-line">{yearsOfExperience} years of Craft</p>
             </div>
 
