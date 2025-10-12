@@ -1,0 +1,405 @@
+@import '../../styles/variables.scss';
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: $color-background;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    position: relative;
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+
+  // ============================================
+  // HEADER (Logo only)
+  // ============================================
+
+  &__header {
+    position: absolute;
+    top: $space-xl;
+    left: $space-xl;
+    z-index: $z-index-fixed;
+
+    @include mobile {
+      top: $space-lg;
+      left: $space-lg;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    background: transparent;
+  }
+
+  &__logo-img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    background: transparent;
+    mix-blend-mode: screen;
+    transition: transform $transition-normal, filter $transition-normal;
+
+    @include mobile {
+      height: 60px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+  }
+
+  &__logo-placeholder {
+    @include flex-center;
+    height: 80px;
+    padding: 0 $space-lg;
+    font-size: $font-size-h2;
+    font-weight: $font-weight-bold;
+    color: $color-accent;
+    font-family: $font-mono;
+
+    @include mobile {
+      height: 60px;
+      font-size: $font-size-h3;
+    }
+  }
+
+  // ============================================
+  // MAIN CONTENT (Split Layout)
+  // ============================================
+
+  &__main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $space-3xl;
+    align-items: center;
+    padding: $space-4xl $space-3xl;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $space-2xl;
+      padding: $space-3xl $space-lg;
+    }
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $space-2xl;
+      padding: $space-3xl $space-xl;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: $space-2xl;
+
+    @include mobile {
+      padding-left: 0;
+      order: 2;
+    }
+
+    @include tablet {
+      padding-left: 0;
+      order: 2;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-hero;
+    font-weight: $font-weight-bold;
+    line-height: $line-height-tight;
+    margin-bottom: $space-xl;
+    color: $color-text-primary;
+    overflow: hidden;
+    border-right: 3px solid $color-accent;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    width: fit-content;
+
+    @include mobile {
+      font-size: clamp(2.5rem, 10vw, 4rem);
+      margin-bottom: $space-lg;
+    }
+  }
+
+  &__title-highlight {
+    background: linear-gradient(
+      90deg,
+      $color-orange-gradient-start 0%,
+      $color-orange-gradient-end 40%,
+      #FFFFFF 50%,
+      $color-orange-gradient-end 60%,
+      $color-orange-gradient-start 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+    display: inline-block;
+  }
+
+  &__subtitle {
+    margin-bottom: $space-2xl;
+
+    @include mobile {
+      margin-bottom: $space-xl;
+    }
+  }
+
+  &__subtitle-line {
+    font-size: $font-size-h3;
+    color: $color-text-secondary;
+    line-height: $line-height-normal;
+    margin: 0;
+    margin-bottom: $space-xs;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include mobile {
+      font-size: $font-size-body;
+    }
+  }
+
+  &__current {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+    padding: $space-lg;
+    border-left: 3px solid $color-accent;
+    background: rgba($color-accent, 0.05);
+    border-radius: $radius-sm;
+
+    @include mobile {
+      padding: $space-md;
+    }
+  }
+
+  &__current-label {
+    font-size: $font-size-small;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: $font-weight-medium;
+  }
+
+  &__current-company {
+    font-size: $font-size-h3;
+    color: $color-text-secondary;
+
+    @include mobile {
+      font-size: $font-size-body;
+    }
+  }
+
+  &__current-highlight {
+    color: $color-text-primary;
+    font-weight: $font-weight-semibold;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, $color-orange-gradient-start, $color-orange-gradient-end);
+      opacity: 0.5;
+    }
+  }
+
+  // ============================================
+  // PROFILE IMAGE (Large & Prominent)
+  // ============================================
+
+  &__profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-xl;
+
+    @include mobile {
+      order: 1;
+      padding: 0;
+    }
+
+    @include tablet {
+      order: 1;
+      padding: $space-lg;
+    }
+  }
+
+  &__profile-img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: $radius-lg;
+    border: 4px solid rgba($color-accent, 0.3);
+    box-shadow: 0 20px 60px rgba($color-accent, 0.2);
+    transition: transform $transition-slow, box-shadow $transition-slow;
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 25px 70px rgba($color-accent, 0.3);
+    }
+
+    @include mobile {
+      max-width: 100%;
+      border-width: 3px;
+    }
+
+    @include tablet {
+      max-width: 400px;
+    }
+  }
+
+  &__profile-placeholder {
+    @include flex-center;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1 / 1;
+    border-radius: $radius-lg;
+    background: linear-gradient(135deg, $color-orange-gradient-start, $color-orange-gradient-end);
+    color: $color-background;
+    font-size: 8rem;
+    font-weight: $font-weight-bold;
+    border: 4px solid rgba($color-accent, 0.3);
+    box-shadow: 0 20px 60px rgba($color-accent, 0.2);
+
+    @include mobile {
+      max-width: 100%;
+      font-size: 4rem;
+      border-width: 3px;
+    }
+
+    @include tablet {
+      max-width: 400px;
+      font-size: 6rem;
+    }
+  }
+
+  // ============================================
+  // SCROLL INDICATOR
+  // ============================================
+
+  &__scroll {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-sm;
+    padding: $space-lg 0 $space-xl 0;
+    opacity: 0.6;
+    transition: opacity $transition-normal;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @include mobile {
+      padding: $space-md 0 $space-lg 0;
+    }
+  }
+
+  &__scroll-line {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom, $color-accent, transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  &__scroll-text {
+    font-size: $font-size-tiny;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: $font-weight-medium;
+  }
+
+  // ============================================
+  // ANIMATIONS
+  // ============================================
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: $color-accent;
+    }
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(10px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 0% center;
+    }
+    100% {
+      background-position: 200% center;
+    }
+  }
+
+  // Reduced motion
+  @include reduced-motion {
+    &__title {
+      animation: none;
+      border-right: none;
+      width: auto;
+    }
+
+    &__title-highlight {
+      animation: none;
+    }
+
+    &__logo-img,
+    &__profile-img {
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
+    }
+
+    &__scroll-line {
+      animation: none;
+    }
+  }
+}

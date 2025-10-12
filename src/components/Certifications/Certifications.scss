@@ -1,0 +1,271 @@
+@import '../../styles/variables.scss';
+
+.certifications {
+  background-color: $color-background;
+  position: relative;
+
+  &__container {
+    // Container styles from global
+  }
+
+  // ============================================
+  // HEADER
+  // ============================================
+
+  &__header {
+    text-align: center;
+    margin-bottom: $space-3xl;
+
+    @include mobile {
+      text-align: left;
+      margin-bottom: $space-2xl;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-h1;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-md;
+    color: $color-text-primary;
+  }
+
+  &__subtitle {
+    font-size: $font-size-body;
+    color: $color-text-secondary;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
+
+    @include mobile {
+      margin: 0;
+    }
+  }
+
+  // ============================================
+  // CERTIFICATIONS GRID
+  // ============================================
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $space-xl;
+    margin-bottom: $space-3xl;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: $space-lg;
+    }
+  }
+
+  &__card {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-lg;
+    padding: $space-xl;
+    background: rgba($color-text-primary, 0.02);
+    border: 1px solid rgba($color-text-primary, 0.08);
+    border-radius: $radius-lg;
+    transition: all $transition-normal;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, $color-orange-gradient-start, $color-orange-gradient-end);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $transition-slow;
+    }
+
+    &:hover {
+      background: rgba($color-text-primary, 0.04);
+      border-color: rgba($color-accent, 0.3);
+      transform: translateY(-4px);
+
+      &::before {
+        transform: scaleX(1);
+      }
+
+      .certifications__card-icon {
+        transform: scale(1.2) rotate(5deg);
+      }
+    }
+
+    @include mobile {
+      padding: $space-lg;
+      gap: $space-md;
+    }
+  }
+
+  &__card-icon {
+    font-size: 3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform $transition-normal;
+
+    @include mobile {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__card-content {
+    flex: 1;
+  }
+
+  &__card-title {
+    font-size: $font-size-h2;
+    font-weight: $font-weight-bold;
+    color: $color-accent;
+    margin-bottom: $space-xs;
+    line-height: $line-height-tight;
+  }
+
+  &__card-full-title {
+    font-size: $font-size-body;
+    color: $color-text-primary;
+    margin-bottom: $space-md;
+    line-height: $line-height-normal;
+
+    @include mobile {
+      font-size: $font-size-small;
+    }
+  }
+
+  &__card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $space-md;
+    flex-wrap: wrap;
+  }
+
+  &__card-issuer {
+    font-size: $font-size-small;
+    color: $color-text-secondary;
+    font-weight: $font-weight-medium;
+  }
+
+  &__card-year {
+    font-size: $font-size-small;
+    color: $color-text-muted;
+    font-family: $font-mono;
+  }
+
+  // ============================================
+  // ACHIEVEMENTS
+  // ============================================
+
+  &__achievements {
+    margin-top: $space-3xl;
+    padding-top: $space-3xl;
+    border-top: 1px solid rgba($color-text-primary, 0.08);
+  }
+
+  &__achievements-title {
+    font-size: $font-size-h2;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    text-align: center;
+    margin-bottom: $space-2xl;
+
+    @include mobile {
+      text-align: left;
+      margin-bottom: $space-xl;
+    }
+  }
+
+  &__achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $space-lg;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__achievement {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: $space-xl;
+    background: linear-gradient(135deg, rgba($color-accent, 0.03), rgba($color-accent, 0.08));
+    border: 1px solid rgba($color-accent, 0.15);
+    border-radius: $radius-lg;
+    transition: all $transition-normal;
+
+    &:hover {
+      background: linear-gradient(135deg, rgba($color-accent, 0.05), rgba($color-accent, 0.12));
+      border-color: rgba($color-accent, 0.3);
+      transform: translateY(-4px);
+    }
+
+    @include mobile {
+      padding: $space-lg;
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+
+  &__achievement-stat {
+    font-size: $font-size-hero;
+    font-weight: $font-weight-bold;
+    @include text-gradient;
+    line-height: 1;
+    margin-bottom: $space-sm;
+
+    @include mobile {
+      font-size: $font-size-h1;
+    }
+  }
+
+  &__achievement-label {
+    font-size: $font-size-body;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    margin-bottom: $space-sm;
+  }
+
+  &__achievement-description {
+    font-size: $font-size-small;
+    color: $color-text-secondary;
+    line-height: $line-height-relaxed;
+    margin: 0;
+  }
+
+  // ============================================
+  // ANIMATIONS
+  // ============================================
+
+  @include reduced-motion {
+    &__card {
+      transition: none;
+
+      &::before {
+        transition: none;
+      }
+
+      &:hover {
+        transform: none;
+
+        .certifications__card-icon {
+          transform: none;
+        }
+      }
+    }
+
+    &__achievement {
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}

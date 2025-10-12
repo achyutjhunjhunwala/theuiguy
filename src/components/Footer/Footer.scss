@@ -1,0 +1,210 @@
+@import '../../styles/variables.scss';
+
+.footer {
+  background: linear-gradient(180deg, $color-background 0%, rgba($color-accent, 0.05) 100%);
+  position: relative;
+  padding-bottom: $space-xl;
+
+  &__container {
+    // Container styles from global
+  }
+
+  &__content {
+    margin-bottom: $space-3xl;
+  }
+
+  // ============================================
+  // HEADER
+  // ============================================
+
+  &__header {
+    text-align: center;
+    margin-bottom: $space-2xl;
+
+    @include mobile {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-h1;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-md;
+    color: $color-text-primary;
+  }
+
+  &__subtitle {
+    font-size: $font-size-body;
+    color: $color-text-secondary;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
+
+    @include mobile {
+      margin: 0;
+      font-size: $font-size-small;
+    }
+  }
+
+  // ============================================
+  // LINKS
+  // ============================================
+
+  &__links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: $space-lg;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $space-lg;
+    padding: $space-xl;
+    background: rgba($color-text-primary, 0.02);
+    border: 1px solid rgba($color-text-primary, 0.08);
+    border-radius: $radius-lg;
+    text-decoration: none;
+    transition: all $transition-normal;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, $color-orange-gradient-start, $color-orange-gradient-end);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $transition-slow;
+    }
+
+    &:hover {
+      background: rgba($color-text-primary, 0.04);
+      border-color: rgba($color-accent, 0.3);
+      transform: translateY(-4px);
+
+      &::before {
+        transform: scaleX(1);
+      }
+
+      .footer__link-icon {
+        transform: scale(1.2);
+      }
+
+      .footer__link-label {
+        color: $color-accent;
+      }
+    }
+
+    &--static {
+      cursor: default;
+
+      &:hover {
+        transform: none;
+      }
+    }
+
+    @include mobile {
+      padding: $space-lg;
+    }
+  }
+
+  &__link-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+    transition: transform $transition-normal;
+
+    @include mobile {
+      font-size: 2rem;
+    }
+  }
+
+  &__link-content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  &__link-label {
+    font-size: $font-size-h3;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    transition: color $transition-normal;
+    line-height: $line-height-tight;
+
+    @include mobile {
+      font-size: $font-size-body;
+    }
+  }
+
+  &__link-description {
+    font-size: $font-size-small;
+    color: $color-text-secondary;
+    line-height: $line-height-normal;
+  }
+
+  // ============================================
+  // BOTTOM
+  // ============================================
+
+  &__bottom {
+    @include flex-between;
+    padding-top: $space-2xl;
+    border-top: 1px solid rgba($color-text-primary, 0.08);
+    gap: $space-lg;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $space-sm;
+    }
+  }
+
+  &__copyright {
+    font-size: $font-size-small;
+    color: $color-text-muted;
+    margin: 0;
+  }
+
+  &__tagline {
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+    @include text-gradient;
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  // ============================================
+  // ANIMATIONS
+  // ============================================
+
+  @include reduced-motion {
+    &__link {
+      transition: none;
+
+      &::before {
+        transition: none;
+      }
+
+      &:hover {
+        transform: none;
+
+        .footer__link-icon {
+          transform: none;
+        }
+      }
+    }
+  }
+}

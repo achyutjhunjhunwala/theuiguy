@@ -32,6 +32,9 @@ bower_components
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
+# Production build
+/build
+
 # Dependency directories
 node_modules/
 jspm_packages/
@@ -61,4 +64,9 @@ typings/
 .idea/
 .idea
 /.idea
+
+# macOS
+.DS_Store
+
+.claude
 

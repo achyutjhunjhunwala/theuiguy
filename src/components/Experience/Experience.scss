@@ -1,0 +1,285 @@
+@import '../../styles/variables.scss';
+
+.experience {
+  background: linear-gradient(180deg, $color-background 0%, rgba($color-accent, 0.03) 100%);
+  position: relative;
+
+  &__container {
+    // Container styles from global
+  }
+
+  // ============================================
+  // HEADER
+  // ============================================
+
+  &__header {
+    text-align: center;
+    margin-bottom: $space-2xl;
+
+    @include mobile {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-h1;
+    font-weight: $font-weight-bold;
+    margin-bottom: $space-md;
+    color: $color-text-primary;
+  }
+
+  &__subtitle {
+    font-size: $font-size-body;
+    color: $color-text-secondary;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: $line-height-relaxed;
+
+    @include mobile {
+      margin: 0;
+    }
+  }
+
+  // ============================================
+  // STATS
+  // ============================================
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: $space-lg;
+    margin-bottom: $space-3xl;
+    padding: $space-xl 0;
+
+    @include mobile {
+      grid-template-columns: repeat(3, 1fr);
+      gap: $space-md;
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $space-xs;
+    padding: $space-lg;
+    background: rgba($color-text-primary, 0.02);
+    border: 1px solid rgba($color-text-primary, 0.08);
+    border-radius: $radius-md;
+    transition: all $transition-normal;
+
+    &:hover {
+      background: rgba($color-text-primary, 0.04);
+      border-color: rgba($color-accent, 0.3);
+      transform: translateY(-4px);
+    }
+
+    @include mobile {
+      padding: $space-md $space-sm;
+    }
+  }
+
+  &__stat-number {
+    font-size: $font-size-h1;
+    font-weight: $font-weight-bold;
+    @include text-gradient;
+    line-height: 1;
+
+    @include mobile {
+      font-size: $font-size-h2;
+    }
+  }
+
+  &__stat-label {
+    font-size: $font-size-small;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: $font-weight-medium;
+    text-align: center;
+
+    @include mobile {
+      font-size: $font-size-tiny;
+    }
+  }
+
+  // ============================================
+  // TIMELINE
+  // ============================================
+
+  &__timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+
+    // Timeline line
+    &::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, $color-accent, transparent);
+
+      @include mobile {
+        left: 12px;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    padding-left: $space-3xl;
+    padding-bottom: $space-3xl;
+    margin-left: 0;
+
+    @include mobile {
+      padding-left: $space-2xl;
+      padding-bottom: $space-2xl;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    // Highlight special items
+    &--current,
+    &--highlight {
+      .experience__item-content {
+        background: rgba($color-accent, 0.05);
+        border-color: rgba($color-accent, 0.3);
+      }
+
+      .experience__item-marker {
+        background: linear-gradient(135deg, $color-orange-gradient-start, $color-orange-gradient-end);
+        box-shadow: $shadow-glow;
+      }
+    }
+  }
+
+  &__item-marker {
+    position: absolute;
+    left: 12px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: $radius-full;
+    background: $color-text-muted;
+    border: 2px solid $color-background;
+    z-index: $z-index-content;
+    transition: all $transition-normal;
+
+    @include mobile {
+      left: 4px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__item-content {
+    background: rgba($color-text-primary, 0.02);
+    border: 1px solid rgba($color-text-primary, 0.08);
+    border-radius: $radius-lg;
+    padding: $space-lg;
+    transition: all $transition-normal;
+
+    &:hover {
+      background: rgba($color-text-primary, 0.04);
+      border-color: rgba($color-text-primary, 0.15);
+      transform: translateX(4px);
+    }
+
+    @include mobile {
+      padding: $space-md;
+    }
+  }
+
+  &__item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $space-sm;
+    gap: $space-md;
+
+    @include mobile {
+      flex-direction: column;
+      gap: $space-xs;
+    }
+  }
+
+  &__item-company {
+    font-size: $font-size-h3;
+    font-weight: $font-weight-bold;
+    color: $color-text-primary;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: $space-sm;
+    flex-wrap: wrap;
+  }
+
+  &__item-badge {
+    font-size: $font-size-tiny;
+    font-weight: $font-weight-medium;
+    color: $color-background;
+    background: linear-gradient(135deg, $color-orange-gradient-start, $color-orange-gradient-end);
+    padding: 4px $space-sm;
+    border-radius: $radius-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__item-duration {
+    font-size: $font-size-small;
+    color: $color-text-muted;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+  }
+
+  &__item-role {
+    font-size: $font-size-body;
+    color: $color-accent;
+    font-weight: $font-weight-medium;
+    margin-bottom: $space-xs;
+  }
+
+  &__item-period {
+    font-size: $font-size-small;
+    color: $color-text-muted;
+    margin-bottom: $space-md;
+  }
+
+  &__item-description {
+    font-size: $font-size-body;
+    color: $color-text-secondary;
+    line-height: $line-height-relaxed;
+    margin: 0;
+
+    @include mobile {
+      font-size: $font-size-small;
+    }
+  }
+
+  // ============================================
+  // ANIMATIONS
+  // ============================================
+
+  @include reduced-motion {
+    &__stat {
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
+    }
+
+    &__item-content {
+      transition: none;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+}

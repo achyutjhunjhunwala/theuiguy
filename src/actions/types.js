@@ -1,4 +1,0 @@
-export const ACTIONS = {
-  FLICKR: {},
-  LOAD_INITIAL_CONFIG: 'LOAD_INITIAL_CONFIG',
-};

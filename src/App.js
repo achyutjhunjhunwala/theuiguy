@@ -1,25 +1,23 @@
-import React, { Component, } from 'react';
-import { Route, Switch, BrowserRouter, Redirect, } from 'react-router-dom';
+import React from 'react';
+import './App.scss';
 
-import './App.css';
+// Import components (will be created next)
+import Hero from './components/Hero/Hero';
+import Expertise from './components/Expertise/Expertise';
+import Experience from './components/Experience/Experience';
+import Certifications from './components/Certifications/Certifications';
+import Footer from './components/Footer/Footer';
 
-import Navigation from './components/navigation/navigation';
-import CV from './components/cv/cv';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <BrowserRouter>
-          <Switch>
-            <Route path={'/'} exact component={Navigation} />
-            <Route path={'/cv'} exact component={CV} />
-            <Redirect to={'/'} />
-          </Switch>
-        </BrowserRouter>
-      </div>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <Hero />
+      <Expertise />
+      <Experience />
+      <Certifications />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
