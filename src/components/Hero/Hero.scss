@@ -153,6 +153,19 @@
     display: inline-block;
   }
 
+  &__name {
+    font-size: $font-size-h3;
+    font-weight: $font-weight-regular;
+    color: $color-text-secondary;
+    margin-bottom: $space-lg;
+    letter-spacing: 0.05em;
+
+    @include mobile {
+      font-size: $font-size-body;
+      margin-bottom: $space-md;
+    }
+  }
+
   &__subtitle {
     margin-bottom: $space-2xl;
 

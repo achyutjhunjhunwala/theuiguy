@@ -42,6 +42,8 @@ const Hero = () => {
             <h1 className="hero__title">
               THE <span className="hero__title-highlight">UI GUY</span>
             </h1>
+            
+            <p className="hero__name">Achyut Jhunjhunwala</p>
 
             <div className="hero__subtitle">
               <p className="hero__subtitle-line">{yearsOfExperience} years of Craft</p>

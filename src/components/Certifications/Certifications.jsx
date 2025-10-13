@@ -6,17 +6,25 @@ const certificationsData = [
     id: 1,
     title: 'CKAD',
     fullTitle: 'Certified Kubernetes Application Developer',
-    issuer: 'Cloud Native Computing Foundation',
-    year: '2023',
-    icon: '☸️'
+    issuer: 'Linux Foundation',
+    year: '2020',
+    logo: 'https://training.linuxfoundation.org/wp-content/uploads/2019/03/logo_cka_whitetext-300x293.png'
   },
   {
     id: 2,
+    title: 'AWS Solutions Architect',
+    fullTitle: 'AWS Certified Solutions Architect - Associate',
+    issuer: 'Amazon Web Services',
+    year: '2019',
+    logo: 'https://d1.awsstatic.com/training-and-certification/certification-badges/AWS-Certified-Solutions-Architect-Associate_badge.3419559c682629072f1eb968d59dea0741772c0f.png'
+  },
+  {
+    id: 3,
     title: 'Exam 480',
     fullTitle: 'Programming in HTML5 with JavaScript and CSS3',
     issuer: 'Microsoft',
-    year: '2014',
-    icon: '🏆'
+    year: '2013',
+    logo: 'https://learn.microsoft.com/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg'
   }
 ];
 
@@ -50,7 +58,13 @@ const Certifications = () => {
         <div className="certifications__grid">
           {certificationsData.map((cert) => (
             <article key={cert.id} className="certifications__card">
-              <div className="certifications__card-icon">{cert.icon}</div>
+              <div className="certifications__card-logo">
+                <img 
+                  src={cert.logo} 
+                  alt={`${cert.issuer} logo`}
+                  className="certifications__card-logo-img"
+                />
+              </div>
               <div className="certifications__card-content">
                 <h3 className="certifications__card-title">{cert.title}</h3>
                 <p className="certifications__card-full-title">{cert.fullTitle}</p>
