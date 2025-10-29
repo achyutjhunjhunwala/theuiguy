@@ -9,11 +9,6 @@ const Hero = () => {
   const logoPath = '/logo.png';
   const profilePath = '/profile.png';
 
-  // Calculate years of experience dynamically (started in 2011)
-  const startYear = 2011;
-  const currentYear = new Date().getFullYear();
-  const yearsOfExperience = currentYear - startYear;
-
   return (
     <section className="hero">
       <div className="hero__container container">
@@ -44,10 +39,6 @@ const Hero = () => {
             </h1>
             
             <p className="hero__name">Achyut Jhunjhunwala</p>
-
-            <div className="hero__subtitle">
-              <p className="hero__subtitle-line">{yearsOfExperience} years of Craft</p>
-            </div>
 
             <div className="hero__current">
               <span className="hero__current-label">Currently</span>
