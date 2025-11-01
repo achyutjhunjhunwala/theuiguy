@@ -20,7 +20,7 @@
     "sass": "^1.69.5"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.23.3",
+    "@babel/eslint-parser": "^7.28.5",
     "eslint": "^8.57.1",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-flowtype": "^8.0.0",
